@@ -1,5 +1,5 @@
 === wpMandrill ===
-Contributors: MC_Will
+Contributors: MC_Will, amanda_a
 Tags: mandrill, mailchimp, transactional email, email, email reliability, smtp, wp_mail, email templates
 Requires at least: 3.0
 Tested up to: 3.8
