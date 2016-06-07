@@ -533,11 +533,11 @@ class Mandrill {
 
             $filename = basename($path);
             
-            if ( !function_exists('get_magic_quotes') ) {
-                function get_magic_quotes() { return false; }
+            if ( !function_exists('get_magic_quotes_runtime') ) {
+                function get_magic_quotes_runtime() { return false; }
             }
-            if ( !function_exists('set_magic_quotes') ) {
-                function set_magic_quotes($value) { return true;}
+            if ( !function_exists('set_magic_quotes_runtime') ) {
+                function set_magic_quotes_runtime($value) { return true;}
             }
             
             if (strnatcmp(phpversion(),'6') >= 0) {
@@ -548,7 +548,9 @@ class Mandrill {
             $file_buffer  = file_get_contents($path);
             $file_buffer  = chunk_split(base64_encode($file_buffer), 76, "\n");
             
-            if (strnatcmp(phpversion(),'6') >= 0) set_magic_quotes_runtime($magic_quotes);
+            if (strnatcmp(phpversion(),'6') >= 0) {
+				set_magic_quotes_runtime($magic_quotes);
+			}
             
             $mime_type = '';
 			if ( function_exists('finfo_open') && function_exists('finfo_file') ) {
